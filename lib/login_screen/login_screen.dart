@@ -14,8 +14,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _userIdController = TextEditingController(text: 'naren@nichi.com');
-  final _passwordController = TextEditingController(text: '••••••••');
+  final _userIdController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   bool _obscurePassword = true;
   bool _rememberMe = false;
@@ -65,36 +65,43 @@ class _LoginScreenState extends State<LoginScreen> {
                     Align(
                       alignment: Alignment.topRight,
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 2,
+                        ),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: const Color(0xFFE2E8F0), width: 1.5),
-                        ),
-                                                 child: DropdownButton<String>(
-                            value: Localizations.localeOf(context).languageCode,
-                            icon: const Icon(Icons.language, size: 16, color: Color(0xFF64748B)),
-                            style: const TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xFF1E293B),
-                            ),
-                            onChanged: (String? newValue) {
-                              if (newValue != null) {
-                                appLocaleNotifier.value = Locale(newValue);
-                              }
-                            },
-                            items: const [
-                              DropdownMenuItem(
-                                value: 'en',
-                                child: Text('English'),
-                              ),
-                              DropdownMenuItem(
-                                value: 'ja',
-                                child: Text('日本語'),
-                              ),
-                            ],
+                          border: Border.all(
+                            color: const Color(0xFFE2E8F0),
+                            width: 1.5,
                           ),
+                        ),
+                        child: DropdownButton<String>(
+                          value: Localizations.localeOf(context).languageCode,
+                          icon: const Icon(
+                            Icons.language,
+                            size: 16,
+                            color: Color(0xFF64748B),
+                          ),
+                          style: const TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xFF1E293B),
+                          ),
+                          onChanged: (String? newValue) {
+                            if (newValue != null) {
+                              appLocaleNotifier.value = Locale(newValue);
+                            }
+                          },
+                          items: const [
+                            DropdownMenuItem(
+                              value: 'en',
+                              child: Text('English'),
+                            ),
+                            DropdownMenuItem(value: 'ja', child: Text('日本語')),
+                          ],
+                        ),
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -108,7 +115,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(18),
                         boxShadow: [
                           BoxShadow(
-                            color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.primary.withValues(alpha: 0.2),
                             blurRadius: 12,
                             offset: const Offset(0, 6),
                           ),
@@ -468,7 +477,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  AppLocalizations.of(context)!.contactAdminClicked,
+                                  AppLocalizations.of(
+                                    context,
+                                  )!.contactAdminClicked,
                                 ),
                                 behavior: SnackBarBehavior.floating,
                               ),
@@ -528,7 +539,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     // Copyright text
                     Text(
                       AppLocalizations.of(context)!.copyrightText,
-                      style: const TextStyle(fontSize: 11, color: Color(0xFF94A3B8)),
+                      style: const TextStyle(
+                        fontSize: 11,
+                        color: Color(0xFF94A3B8),
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ],
