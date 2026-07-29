@@ -1,6 +1,6 @@
-import 'package:flutter_base_project/features/users/domain/entities/app_user.dart';
-import 'package:flutter_base_project/features/users/domain/usecases/get_users_usecase.dart';
-import 'package:flutter_base_project/features/users/presentation/providers/user_providers.dart';
+import 'package:co_works/features/users/domain/entities/app_user.dart';
+import 'package:co_works/features/users/domain/usecases/get_users_usecase.dart';
+import 'package:co_works/features/users/presentation/providers/user_providers.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'users_view_model.g.dart';

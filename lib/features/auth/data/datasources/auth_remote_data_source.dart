@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_base_project/core/constants/api_endpoints.dart';
-import 'package:flutter_base_project/features/auth/data/models/auth_response_model.dart';
-import 'package:flutter_base_project/features/auth/data/models/login_request_model.dart';
+import 'package:co_works/core/constants/api_endpoints.dart';
+import 'package:co_works/features/auth/data/models/auth_response_model.dart';
+import 'package:co_works/features/auth/data/models/login_request_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'auth_remote_data_source.g.dart';

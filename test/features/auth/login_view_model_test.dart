@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_base_project/core/error/failures.dart';
-import 'package:flutter_base_project/features/auth/domain/entities/auth_token.dart';
-import 'package:flutter_base_project/features/auth/domain/repositories/auth_repository.dart';
-import 'package:flutter_base_project/features/auth/presentation/providers/auth_providers.dart';
-import 'package:flutter_base_project/features/auth/presentation/viewmodels/auth_controller.dart';
-import 'package:flutter_base_project/features/auth/presentation/viewmodels/login_state.dart';
-import 'package:flutter_base_project/features/auth/presentation/viewmodels/login_view_model.dart';
+import 'package:co_works/core/error/failures.dart';
+import 'package:co_works/features/auth/domain/entities/auth_token.dart';
+import 'package:co_works/features/auth/domain/repositories/auth_repository.dart';
+import 'package:co_works/features/auth/presentation/providers/auth_providers.dart';
+import 'package:co_works/features/auth/presentation/viewmodels/auth_controller.dart';
+import 'package:co_works/features/auth/presentation/viewmodels/login_state.dart';
+import 'package:co_works/features/auth/presentation/viewmodels/login_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 

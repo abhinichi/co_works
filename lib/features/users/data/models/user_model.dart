@@ -1,4 +1,4 @@
-import 'package:flutter_base_project/features/users/domain/entities/app_user.dart';
+import 'package:co_works/features/users/domain/entities/app_user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_model.freezed.dart';

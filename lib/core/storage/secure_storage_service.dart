@@ -1,4 +1,4 @@
-import 'package:flutter_base_project/core/constants/storage_keys.dart';
+import 'package:co_works/core/constants/storage_keys.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 /// Wrapper around [FlutterSecureStorage] for **sensitive** data (auth tokens,

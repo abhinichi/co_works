@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_base_project/core/error/failures.dart';
-import 'package:flutter_base_project/core/network/api_error_mapper.dart';
-import 'package:flutter_base_project/core/network/network_info.dart';
-import 'package:flutter_base_project/features/auth/data/datasources/auth_local_data_source.dart';
-import 'package:flutter_base_project/features/auth/data/datasources/auth_remote_data_source.dart';
-import 'package:flutter_base_project/features/auth/data/models/login_request_model.dart';
-import 'package:flutter_base_project/features/auth/domain/entities/auth_token.dart';
-import 'package:flutter_base_project/features/auth/domain/repositories/auth_repository.dart';
+import 'package:co_works/core/error/failures.dart';
+import 'package:co_works/core/network/api_error_mapper.dart';
+import 'package:co_works/core/network/network_info.dart';
+import 'package:co_works/features/auth/data/datasources/auth_local_data_source.dart';
+import 'package:co_works/features/auth/data/datasources/auth_remote_data_source.dart';
+import 'package:co_works/features/auth/data/models/login_request_model.dart';
+import 'package:co_works/features/auth/domain/entities/auth_token.dart';
+import 'package:co_works/features/auth/domain/repositories/auth_repository.dart';
 
 /// Concrete implementation of [AuthRepository].
 ///

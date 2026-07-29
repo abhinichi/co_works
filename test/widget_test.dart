@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_project/features/auth/presentation/views/login_view.dart';
-import 'package:flutter_base_project/l10n/generated/app_localizations.dart';
+import 'package:co_works/features/auth/presentation/views/login_view.dart';
+import 'package:co_works/l10n/generated/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 

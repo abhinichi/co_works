@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_project/core/utils/extensions/context_extensions.dart';
-import 'package:flutter_base_project/core/utils/extensions/failure_extensions.dart';
-import 'package:flutter_base_project/core/utils/validators.dart';
-import 'package:flutter_base_project/core/widgets/app_text_field.dart';
-import 'package:flutter_base_project/core/widgets/primary_button.dart';
-import 'package:flutter_base_project/features/auth/presentation/viewmodels/login_state.dart';
-import 'package:flutter_base_project/features/auth/presentation/viewmodels/login_view_model.dart';
+import 'package:co_works/core/utils/extensions/context_extensions.dart';
+import 'package:co_works/core/utils/extensions/failure_extensions.dart';
+import 'package:co_works/core/utils/validators.dart';
+import 'package:co_works/core/widgets/app_text_field.dart';
+import 'package:co_works/core/widgets/primary_button.dart';
+import 'package:co_works/features/auth/presentation/viewmodels/login_state.dart';
+import 'package:co_works/features/auth/presentation/viewmodels/login_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// The View in MVVM: a thin, declarative widget.

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_base_project/core/storage/secure_storage_service.dart';
+import 'package:co_works/core/storage/secure_storage_service.dart';
 
 /// Attaches the bearer token (when present) to every outgoing request.
 ///

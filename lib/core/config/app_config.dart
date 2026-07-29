@@ -1,4 +1,4 @@
-import 'package:flutter_base_project/core/constants/app_constants.dart';
+import 'package:co_works/core/constants/app_constants.dart';
 
 /// Build flavors supported by the app.
 enum Flavor { dev, staging, prod }

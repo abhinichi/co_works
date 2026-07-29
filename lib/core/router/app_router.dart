@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_base_project/core/router/app_routes.dart';
-import 'package:flutter_base_project/core/router/splash_view.dart';
-import 'package:flutter_base_project/features/auth/presentation/viewmodels/auth_controller.dart';
-import 'package:flutter_base_project/features/auth/presentation/views/login_view.dart';
-import 'package:flutter_base_project/features/users/presentation/views/users_view.dart';
+import 'package:co_works/core/router/app_routes.dart';
+import 'package:co_works/core/router/splash_view.dart';
+import 'package:co_works/features/auth/presentation/viewmodels/auth_controller.dart';
+import 'package:co_works/features/auth/presentation/views/login_view.dart';
+import 'package:co_works/features/users/presentation/views/users_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

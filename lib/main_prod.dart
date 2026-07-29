@@ -1,5 +1,5 @@
-import 'package:flutter_base_project/bootstrap.dart';
-import 'package:flutter_base_project/core/config/app_config.dart';
+import 'package:co_works/bootstrap.dart';
+import 'package:co_works/core/config/app_config.dart';
 
 /// Entry point for the **prod** flavor.
 ///

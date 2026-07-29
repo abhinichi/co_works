@@ -1,7 +1,7 @@
-import 'package:flutter_base_project/features/auth/domain/usecases/login_usecase.dart';
-import 'package:flutter_base_project/features/auth/presentation/providers/auth_providers.dart';
-import 'package:flutter_base_project/features/auth/presentation/viewmodels/auth_controller.dart';
-import 'package:flutter_base_project/features/auth/presentation/viewmodels/login_state.dart';
+import 'package:co_works/features/auth/domain/usecases/login_usecase.dart';
+import 'package:co_works/features/auth/presentation/providers/auth_providers.dart';
+import 'package:co_works/features/auth/presentation/viewmodels/auth_controller.dart';
+import 'package:co_works/features/auth/presentation/viewmodels/login_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'login_view_model.g.dart';

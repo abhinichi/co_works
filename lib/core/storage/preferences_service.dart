@@ -1,4 +1,4 @@
-import 'package:flutter_base_project/core/constants/storage_keys.dart';
+import 'package:co_works/core/constants/storage_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Wrapper around [SharedPreferences] for **non-sensitive** flags and settings

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_project/l10n/generated/app_localizations.dart';
+import 'package:co_works/l10n/generated/app_localizations.dart';
 
 /// Ergonomic shortcuts on [BuildContext] for things accessed constantly in the
 /// UI layer. Keeps widget code terse and readable.

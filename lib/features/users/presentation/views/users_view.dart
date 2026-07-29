@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_project/core/error/failures.dart';
-import 'package:flutter_base_project/core/theme/theme_controller.dart';
-import 'package:flutter_base_project/core/utils/extensions/context_extensions.dart';
-import 'package:flutter_base_project/core/utils/extensions/failure_extensions.dart';
-import 'package:flutter_base_project/core/widgets/empty_view.dart';
-import 'package:flutter_base_project/core/widgets/error_view.dart';
-import 'package:flutter_base_project/core/widgets/loading_view.dart';
-import 'package:flutter_base_project/features/auth/presentation/viewmodels/auth_controller.dart';
-import 'package:flutter_base_project/features/users/domain/entities/app_user.dart';
-import 'package:flutter_base_project/features/users/presentation/viewmodels/users_view_model.dart';
+import 'package:co_works/core/error/failures.dart';
+import 'package:co_works/core/theme/theme_controller.dart';
+import 'package:co_works/core/utils/extensions/context_extensions.dart';
+import 'package:co_works/core/utils/extensions/failure_extensions.dart';
+import 'package:co_works/core/widgets/empty_view.dart';
+import 'package:co_works/core/widgets/error_view.dart';
+import 'package:co_works/core/widgets/loading_view.dart';
+import 'package:co_works/features/auth/presentation/viewmodels/auth_controller.dart';
+import 'package:co_works/features/users/domain/entities/app_user.dart';
+import 'package:co_works/features/users/presentation/viewmodels/users_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// View for the users list. Renders the three states of the async ViewModel

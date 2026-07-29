@@ -1,10 +1,10 @@
-import 'package:flutter_base_project/core/providers/core_providers.dart';
-import 'package:flutter_base_project/features/auth/data/datasources/auth_local_data_source.dart';
-import 'package:flutter_base_project/features/auth/data/datasources/auth_remote_data_source.dart';
-import 'package:flutter_base_project/features/auth/data/repositories/auth_repository_impl.dart';
-import 'package:flutter_base_project/features/auth/domain/repositories/auth_repository.dart';
-import 'package:flutter_base_project/features/auth/domain/usecases/login_usecase.dart';
-import 'package:flutter_base_project/features/auth/domain/usecases/logout_usecase.dart';
+import 'package:co_works/core/providers/core_providers.dart';
+import 'package:co_works/features/auth/data/datasources/auth_local_data_source.dart';
+import 'package:co_works/features/auth/data/datasources/auth_remote_data_source.dart';
+import 'package:co_works/features/auth/data/repositories/auth_repository_impl.dart';
+import 'package:co_works/features/auth/domain/repositories/auth_repository.dart';
+import 'package:co_works/features/auth/domain/usecases/login_usecase.dart';
+import 'package:co_works/features/auth/domain/usecases/logout_usecase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_providers.g.dart';

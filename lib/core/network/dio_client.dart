@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_base_project/core/constants/app_constants.dart';
-import 'package:flutter_base_project/core/network/interceptors/auth_interceptor.dart';
-import 'package:flutter_base_project/core/network/interceptors/logging_interceptor.dart';
+import 'package:co_works/core/constants/app_constants.dart';
+import 'package:co_works/core/network/interceptors/auth_interceptor.dart';
+import 'package:co_works/core/network/interceptors/logging_interceptor.dart';
 
 /// Factory that assembles a fully configured [Dio] instance.
 ///

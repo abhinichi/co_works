@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_base_project/core/error/failures.dart';
-import 'package:flutter_base_project/features/auth/domain/entities/auth_token.dart';
+import 'package:co_works/core/error/failures.dart';
+import 'package:co_works/features/auth/domain/entities/auth_token.dart';
 
 /// Repository **contract** for authentication.
 ///

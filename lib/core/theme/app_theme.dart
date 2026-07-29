@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_project/core/theme/app_colors.dart';
+import 'package:co_works/core/theme/app_colors.dart';
 
 /// Centralised Material 3 theme definitions.
 ///

@@ -300,7 +300,7 @@ flutter test
 | File(s) | What gets replaced |
 |---|---|
 | `pubspec.yaml` | `name:` (Dart package name, derived from `--app-name`) and `description:` |
-| `lib/**/*.dart`, `test/**/*.dart` | Every `package:flutter_base_project/...` import; the `AppConstants.appName` string |
+| `lib/**/*.dart`, `test/**/*.dart` | Every `package:co_works/...` import; the `AppConstants.appName` string |
 | `lib/l10n/app_en.arb` | The `appTitle` value |
 | `android/app/build.gradle.kts` | `namespace` and `applicationId` |
 | `android/.../AndroidManifest.xml` | `android:label` (points at `@string/app_name`, unchanged by the script) |

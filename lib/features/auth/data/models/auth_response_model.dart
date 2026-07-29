@@ -1,4 +1,4 @@
-import 'package:flutter_base_project/features/auth/domain/entities/auth_token.dart';
+import 'package:co_works/features/auth/domain/entities/auth_token.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_response_model.freezed.dart';

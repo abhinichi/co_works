@@ -1,4 +1,4 @@
-import 'package:flutter_base_project/core/storage/secure_storage_service.dart';
+import 'package:co_works/core/storage/secure_storage_service.dart';
 
 /// Local data source for authentication: persists and reads the session token
 /// via secure storage. Keeping this behind its own class means the repository

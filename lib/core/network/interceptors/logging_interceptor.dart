@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_base_project/core/utils/app_logger.dart';
+import 'package:co_works/core/utils/app_logger.dart';
 
 /// Logs every request, response and error through [AppLogger].
 ///
