@@ -24,4 +24,11 @@ class PreferencesService {
   /// Persists [value], expected to be a `ThemeMode.name` string.
   Future<void> setThemeMode(String value) =>
       _prefs.setString(StorageKeys.themeMode, value);
+
+  /// The persisted locale code as a string, e.g. `'en'` or `'ja'`.
+  String? get locale => _prefs.getString(StorageKeys.locale);
+
+  /// Persists the locale [value] code.
+  Future<void> setLocale(String value) =>
+      _prefs.setString(StorageKeys.locale, value);
 }

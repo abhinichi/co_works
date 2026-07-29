@@ -7,10 +7,12 @@ class AppRoutes {
 
   static const String splash = '/';
   static const String login = '/login';
+  static const String forgotPassword = '/forgot-password';
   static const String users = '/users';
 
   // Named routes
   static const String splashName = 'splash';
   static const String loginName = 'login';
+  static const String forgotPasswordName = 'forgotPassword';
   static const String usersName = 'users';
 }

@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:co_works/core/config/app_config.dart';
+import 'package:co_works/core/providers/locale_provider.dart';
 import 'package:co_works/core/router/app_router.dart';
 import 'package:co_works/core/theme/app_theme.dart';
 import 'package:co_works/core/theme/theme_controller.dart';
 import 'package:co_works/l10n/generated/app_localizations.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Root widget of the application.
 ///
@@ -16,6 +18,7 @@ class App extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(goRouterProvider);
     final themeMode = ref.watch(themeControllerProvider);
+    final locale = ref.watch(localeControllerProvider);
 
     return MaterialApp.router(
       title: AppConfig.instance.appName,
@@ -24,6 +27,7 @@ class App extends ConsumerWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: themeMode,
+      locale: locale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       routerConfig: router,

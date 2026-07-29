@@ -14,4 +14,5 @@ class StorageKeys {
   // Shared preferences
   static const String isOnboardingComplete = 'is_onboarding_complete';
   static const String themeMode = 'theme_mode';
+  static const String locale = 'locale_code';
 }

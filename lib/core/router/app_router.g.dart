@@ -13,8 +13,8 @@ part of 'app_router.dart';
 ///
 /// `redirect` is the single source of truth for navigation guards:
 ///  * while auth status is `unknown` → stay on the splash screen;
-///  * unauthenticated → forced to `/login`;
-///  * authenticated → kept out of `/login` and `/`.
+///  * unauthenticated → forced to `/login` or `/forgot-password`;
+///  * authenticated → kept out of auth screens.
 ///
 /// A [ValueNotifier] bridges the Riverpod [AuthController] to go_router's
 /// `refreshListenable`, so the router re-evaluates `redirect` on every auth
@@ -28,8 +28,8 @@ final goRouterProvider = GoRouterProvider._();
 ///
 /// `redirect` is the single source of truth for navigation guards:
 ///  * while auth status is `unknown` → stay on the splash screen;
-///  * unauthenticated → forced to `/login`;
-///  * authenticated → kept out of `/login` and `/`.
+///  * unauthenticated → forced to `/login` or `/forgot-password`;
+///  * authenticated → kept out of auth screens.
 ///
 /// A [ValueNotifier] bridges the Riverpod [AuthController] to go_router's
 /// `refreshListenable`, so the router re-evaluates `redirect` on every auth
@@ -43,8 +43,8 @@ final class GoRouterProvider
   ///
   /// `redirect` is the single source of truth for navigation guards:
   ///  * while auth status is `unknown` → stay on the splash screen;
-  ///  * unauthenticated → forced to `/login`;
-  ///  * authenticated → kept out of `/login` and `/`.
+  ///  * unauthenticated → forced to `/login` or `/forgot-password`;
+  ///  * authenticated → kept out of auth screens.
   ///
   /// A [ValueNotifier] bridges the Riverpod [AuthController] to go_router's
   /// `refreshListenable`, so the router re-evaluates `redirect` on every auth
@@ -82,4 +82,4 @@ final class GoRouterProvider
   }
 }
 
-String _$goRouterHash() => r'c14a01fac8064bf49590d421041afadb55edf390';
+String _$goRouterHash() => r'0f74892a69cec91638015bd359573b21d147b1b5';

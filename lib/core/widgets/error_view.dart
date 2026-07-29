@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:co_works/core/utils/extensions/context_extensions.dart';
+import 'package:flutter/material.dart';
 
 /// Full-screen error placeholder with an optional retry action.
 ///

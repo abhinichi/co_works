@@ -1,17 +1,21 @@
-import 'package:flutter/material.dart';
+import 'package:co_works/core/providers/core_providers.dart';
 import 'package:co_works/features/auth/presentation/views/login_view.dart';
 import 'package:co_works/l10n/generated/app_localizations.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   testWidgets('LoginView renders its fields and submit button', (tester) async {
-    // A View can be pumped in isolation: it only depends on its ViewModel,
-    // whose initial state has no external dependencies. Localization delegates
-    // are supplied so `context.l10n` resolves.
+    // Setup mock shared preferences.
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await SharedPreferences.getInstance();
+
     await tester.pumpWidget(
-      const ProviderScope(
-        child: MaterialApp(
+      ProviderScope(
+        overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
+        child: const MaterialApp(
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           home: LoginView(),
@@ -20,8 +24,9 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(find.text('Welcome back'), findsOneWidget);
+    // Verify UI components.
+    expect(find.text('Login'), findsOneWidget);
     expect(find.byType(TextFormField), findsNWidgets(2));
-    expect(find.widgetWithText(FilledButton, 'Sign in'), findsOneWidget);
+    expect(find.text('Sign In'), findsOneWidget);
   });
 }

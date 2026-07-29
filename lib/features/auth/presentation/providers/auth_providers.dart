@@ -3,6 +3,7 @@ import 'package:co_works/features/auth/data/datasources/auth_local_data_source.d
 import 'package:co_works/features/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:co_works/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:co_works/features/auth/domain/repositories/auth_repository.dart';
+import 'package:co_works/features/auth/domain/usecases/forgot_password_usecase.dart';
 import 'package:co_works/features/auth/domain/usecases/login_usecase.dart';
 import 'package:co_works/features/auth/domain/usecases/logout_usecase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -39,3 +40,7 @@ LoginUseCase loginUseCase(Ref ref) =>
 @riverpod
 LogoutUseCase logoutUseCase(Ref ref) =>
     LogoutUseCase(ref.watch(authRepositoryProvider));
+
+@riverpod
+ForgotPasswordUseCase forgotPasswordUseCase(Ref ref) =>
+    ForgotPasswordUseCase(ref.watch(authRepositoryProvider));

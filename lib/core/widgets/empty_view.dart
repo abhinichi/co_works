@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:co_works/core/utils/extensions/context_extensions.dart';
+import 'package:flutter/material.dart';
 
 /// Placeholder shown when a screen has loaded successfully but has no data.
 ///

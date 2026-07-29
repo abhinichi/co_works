@@ -1,6 +1,6 @@
-import 'package:dartz/dartz.dart';
 import 'package:co_works/core/error/failures.dart';
 import 'package:co_works/features/auth/domain/entities/auth_token.dart';
+import 'package:dartz/dartz.dart';
 
 /// Repository **contract** for authentication.
 ///
@@ -20,4 +20,7 @@ abstract interface class AuthRepository {
 
   /// Whether a valid session token is currently stored.
   Future<bool> isLoggedIn();
+
+  /// Submits email to send password reset instructions.
+  Future<Either<Failure, Unit>> forgotPassword({required String email});
 }

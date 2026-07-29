@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_en.dart';
+import 'app_localizations_ja.dart';
 
 // ignore_for_file: type=lint
 
@@ -92,13 +93,190 @@ abstract class AppLocalizations {
       ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[Locale('en')];
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('en'),
+    Locale('ja'),
+  ];
 
   /// Application title shown by the OS (task switcher, etc.).
   ///
   /// In en, this message translates to:
-  /// **'Flutter Base Project'**
+  /// **'CoWork Member Login'**
   String get appTitle;
+
+  /// The brand name of the app
+  ///
+  /// In en, this message translates to:
+  /// **'CoWork'**
+  String get appName;
+
+  /// Sub-header below brand name
+  ///
+  /// In en, this message translates to:
+  /// **'MEMBER LOGIN'**
+  String get memberLogin;
+
+  /// Main title of the login form
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get loginHeader;
+
+  /// Sub-description of the login form
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your credentials to log in.'**
+  String get loginSubtitle;
+
+  /// Label for the User ID input field
+  ///
+  /// In en, this message translates to:
+  /// **'User ID'**
+  String get userIdLabel;
+
+  /// Label for the Password input field
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get passwordLabel;
+
+  /// Label for the Remember me checkbox
+  ///
+  /// In en, this message translates to:
+  /// **'Remember me'**
+  String get rememberMe;
+
+  /// Button/link text for resetting password
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password?'**
+  String get forgotPassword;
+
+  /// Text for the sign-in submit button
+  ///
+  /// In en, this message translates to:
+  /// **'Sign In'**
+  String get signInButton;
+
+  /// Validation error when user ID field is empty
+  ///
+  /// In en, this message translates to:
+  /// **'User ID is required'**
+  String get userIdRequired;
+
+  /// Validation error when email address format is incorrect
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email address'**
+  String get userIdInvalid;
+
+  /// Validation error when password field is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required'**
+  String get passwordRequired;
+
+  /// Validation error when password is too short
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters'**
+  String get passwordInvalid;
+
+  /// Footer helper text asking if the user has an account
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account? '**
+  String get dontHaveAccount;
+
+  /// Link text to contact administrator
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Admin'**
+  String get contactAdmin;
+
+  /// Footer link for Help Center
+  ///
+  /// In en, this message translates to:
+  /// **'Help Center'**
+  String get helpCenter;
+
+  /// Footer link for Privacy Policy
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacyPolicy;
+
+  /// Copyright notice footer
+  ///
+  /// In en, this message translates to:
+  /// **'© 2026 CoWork Management Systems. All rights reserved.'**
+  String get copyrightText;
+
+  /// Snackbar message when successfully submitting login form
+  ///
+  /// In en, this message translates to:
+  /// **'Signing in as {email}...'**
+  String signingInAs(String email);
+
+  /// Snackbar message when forgot password link is tapped
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password link clicked'**
+  String get forgotPasswordClicked;
+
+  /// Snackbar message when contact admin link is tapped
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Admin clicked'**
+  String get contactAdminClicked;
+
+  /// Forgot password screen heading
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Password'**
+  String get forgotPasswordTitle;
+
+  /// Instructions under forgot password heading
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your User ID or registered Email to receive reset instructions.'**
+  String get forgotPasswordInstruction;
+
+  /// Label for the email/user ID input field on forgot password screen
+  ///
+  /// In en, this message translates to:
+  /// **'Email or User ID'**
+  String get emailOrUserIdLabel;
+
+  /// Placeholder hint for email/user ID input field
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., naren@nichi.com'**
+  String get emailOrUserIdPlaceholder;
+
+  /// Text for button that sends reset link
+  ///
+  /// In en, this message translates to:
+  /// **'Send Reset Link'**
+  String get sendResetLinkLabel;
+
+  /// Link text to go back to the login screen
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Login'**
+  String get backToLogin;
+
+  /// Footer link for Terms of Use
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Use'**
+  String get termsOfUse;
+
+  /// Toast message showing email reset link has been sent
+  ///
+  /// In en, this message translates to:
+  /// **'Reset link sent to {email}'**
+  String resetLinkSent(String email);
 
   /// Login screen app bar title.
   ///
@@ -117,18 +295,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Email'**
   String get emailLabel;
-
-  /// Label for the password input field.
-  ///
-  /// In en, this message translates to:
-  /// **'Password'**
-  String get passwordLabel;
-
-  /// Login submit button label.
-  ///
-  /// In en, this message translates to:
-  /// **'Sign in'**
-  String get signInButton;
 
   /// Users list screen title.
   ///
@@ -208,7 +374,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['en'].contains(locale.languageCode);
+      <String>['en', 'ja'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -219,6 +385,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   switch (locale.languageCode) {
     case 'en':
       return AppLocalizationsEn();
+    case 'ja':
+      return AppLocalizationsJa();
   }
 
   throw FlutterError(

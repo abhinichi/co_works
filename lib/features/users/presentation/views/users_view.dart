@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:co_works/core/error/failures.dart';
 import 'package:co_works/core/theme/theme_controller.dart';
 import 'package:co_works/core/utils/extensions/context_extensions.dart';
@@ -9,6 +8,7 @@ import 'package:co_works/core/widgets/loading_view.dart';
 import 'package:co_works/features/auth/presentation/viewmodels/auth_controller.dart';
 import 'package:co_works/features/users/domain/entities/app_user.dart';
 import 'package:co_works/features/users/presentation/viewmodels/users_view_model.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// View for the users list. Renders the three states of the async ViewModel

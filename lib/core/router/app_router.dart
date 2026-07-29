@@ -1,9 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:co_works/core/router/app_routes.dart';
 import 'package:co_works/core/router/splash_view.dart';
 import 'package:co_works/features/auth/presentation/viewmodels/auth_controller.dart';
+import 'package:co_works/features/auth/presentation/views/forgot_password_view.dart';
 import 'package:co_works/features/auth/presentation/views/login_view.dart';
 import 'package:co_works/features/users/presentation/views/users_view.dart';
+import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -14,8 +15,8 @@ part 'app_router.g.dart';
 ///
 /// `redirect` is the single source of truth for navigation guards:
 ///  * while auth status is `unknown` → stay on the splash screen;
-///  * unauthenticated → forced to `/login`;
-///  * authenticated → kept out of `/login` and `/`.
+///  * unauthenticated → forced to `/login` or `/forgot-password`;
+///  * authenticated → kept out of auth screens.
 ///
 /// A [ValueNotifier] bridges the Riverpod [AuthController] to go_router's
 /// `refreshListenable`, so the router re-evaluates `redirect` on every auth
@@ -30,7 +31,7 @@ GoRouter goRouter(Ref ref) {
   ref.onDispose(refresh.dispose);
 
   return GoRouter(
-    initialLocation: AppRoutes.splash,
+    initialLocation: AppRoutes.login,
     debugLogDiagnostics: kDebugMode,
     refreshListenable: refresh,
     redirect: (context, state) {
@@ -38,18 +39,20 @@ GoRouter goRouter(Ref ref) {
       final location = state.matchedLocation;
 
       if (status == AuthStatus.unknown) {
-        return location == AppRoutes.splash ? null : AppRoutes.splash;
+        return location == AppRoutes.splash ? AppRoutes.login : AppRoutes.splash;
       }
 
       final isLoggedIn = status == AuthStatus.authenticated;
-      final isOnLoginFlow =
-          location == AppRoutes.login || location == AppRoutes.splash;
+      final isOnAuthFlow =
+          location == AppRoutes.login ||
+          location == AppRoutes.forgotPassword ||
+          location == AppRoutes.splash;
 
       if (!isLoggedIn) {
-        return location == AppRoutes.login ? null : AppRoutes.login;
+        return isOnAuthFlow ? null : AppRoutes.login;
       }
-      if (isOnLoginFlow) return AppRoutes.users;
-      return null;
+      if (isOnAuthFlow) return AppRoutes.users;
+      return AppRoutes.login;
     },
     routes: [
       GoRoute(
@@ -61,6 +64,11 @@ GoRouter goRouter(Ref ref) {
         path: AppRoutes.login,
         name: AppRoutes.loginName,
         builder: (context, state) => const LoginView(),
+      ),
+      GoRoute(
+        path: AppRoutes.forgotPassword,
+        name: AppRoutes.forgotPasswordName,
+        builder: (context, state) => const ForgotPasswordView(),
       ),
       GoRoute(
         path: AppRoutes.users,

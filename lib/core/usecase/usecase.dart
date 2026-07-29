@@ -1,5 +1,5 @@
-import 'package:dartz/dartz.dart';
 import 'package:co_works/core/error/failures.dart';
+import 'package:dartz/dartz.dart';
 
 /// Base contract for every use case (a.k.a. interactor) in the domain layer.
 ///

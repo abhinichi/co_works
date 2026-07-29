@@ -1,7 +1,7 @@
-import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:co_works/core/error/failures.dart';
 import 'package:co_works/core/network/network_info.dart';
+import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 /// Runs a data-source call and converts any thrown error into a [Failure],
 /// returning the canonical `Either<Failure, T>` used throughout the app.

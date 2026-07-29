@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:co_works/core/error/failures.dart';
 import 'package:co_works/core/network/api_error_mapper.dart';
 import 'package:co_works/core/network/network_info.dart';
@@ -7,6 +6,7 @@ import 'package:co_works/features/auth/data/datasources/auth_remote_data_source.
 import 'package:co_works/features/auth/data/models/login_request_model.dart';
 import 'package:co_works/features/auth/domain/entities/auth_token.dart';
 import 'package:co_works/features/auth/domain/repositories/auth_repository.dart';
+import 'package:dartz/dartz.dart';
 
 /// Concrete implementation of [AuthRepository].
 ///
@@ -57,4 +57,16 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<bool> isLoggedIn() => _local.hasToken();
+
+  @override
+  Future<Either<Failure, Unit>> forgotPassword({required String email}) async {
+    // Since reqres.in does not support a forgot-password endpoint, we simulate
+    // the network latency and return success.
+    try {
+      await Future<void>.delayed(const Duration(seconds: 1));
+      return const Right(unit);
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
+  }
 }

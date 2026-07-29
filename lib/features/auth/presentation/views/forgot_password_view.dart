@@ -4,66 +4,51 @@ import 'package:co_works/core/theme/app_colors.dart';
 import 'package:co_works/core/utils/extensions/context_extensions.dart';
 import 'package:co_works/core/utils/extensions/failure_extensions.dart';
 import 'package:co_works/core/widgets/building_painter.dart';
-import 'package:co_works/features/auth/presentation/viewmodels/login_state.dart';
-import 'package:co_works/features/auth/presentation/viewmodels/login_view_model.dart';
+import 'package:co_works/features/auth/presentation/viewmodels/forgot_password_state.dart';
+import 'package:co_works/features/auth/presentation/viewmodels/forgot_password_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-/// The View in MVVM: a thin, declarative widget rendering login UI.
-class LoginView extends ConsumerStatefulWidget {
-  const LoginView({super.key});
+/// The View in MVVM: renders Forgot Password UI from its ViewModel state.
+class ForgotPasswordView extends ConsumerStatefulWidget {
+  const ForgotPasswordView({super.key});
 
   @override
-  ConsumerState<LoginView> createState() => _LoginViewState();
+  ConsumerState<ForgotPasswordView> createState() => _ForgotPasswordViewState();
 }
 
-class _LoginViewState extends ConsumerState<LoginView> {
+class _ForgotPasswordViewState extends ConsumerState<ForgotPasswordView> {
   final _formKey = GlobalKey<FormState>();
-
-  // Demo credentials accepted by the reqres.in sandbox API.
-  final _userIdController = TextEditingController(text: 'user@coworks.com');
-  final _passwordController = TextEditingController(text: '*******');
-
-  bool _rememberMe = false;
-  bool _isHoveringSignIn = false;
-
-  @override
-  void initState() {
-    super.initState();
-    // Seed initial demo values into the ViewModel state
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final notifier = ref.read(loginViewModelProvider.notifier);
-      notifier.emailChanged(_userIdController.text);
-      notifier.passwordChanged(_passwordController.text);
-    });
-  }
+  final _emailController = TextEditingController();
+  bool _isHoveringSend = false;
 
   @override
   void dispose() {
-    _userIdController.dispose();
-    _passwordController.dispose();
+    _emailController.dispose();
     super.dispose();
   }
 
-  void _onSubmit() {
-    if (_formKey.currentState?.validate() ?? false) {
+  void _handleSendResetLink() {
+    if (_formKey.currentState!.validate()) {
       FocusScope.of(context).unfocus();
-      ref.read(loginViewModelProvider.notifier).submit();
+      ref.read(forgotPasswordViewModelProvider.notifier).submit();
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(loginViewModelProvider);
-    final viewModel = ref.read(loginViewModelProvider.notifier);
+    final state = ref.watch(forgotPasswordViewModelProvider);
+    final viewModel = ref.read(forgotPasswordViewModelProvider.notifier);
     final activeLocale = ref.watch(localeControllerProvider);
 
-    // Surface failures as a snackbar without rebuilding the whole tree for it.
-    ref.listen(loginViewModelProvider, (previous, next) {
-      final failure = next.failure;
-      if (next.status == LoginStatus.failure && failure != null) {
-        context.showSnackBar(failure.localizedMessage(context.l10n));
+    // Listen for state side effects (success and failure snackbars)
+    ref.listen(forgotPasswordViewModelProvider, (previous, next) {
+      if (next.status == ForgotPasswordStatus.success) {
+        context.showSnackBar(context.l10n.resetLinkSent(next.email));
+      } else if (next.status == ForgotPasswordStatus.failure &&
+          next.failure != null) {
+        context.showSnackBar(next.failure!.localizedMessage(context.l10n));
       }
     });
 
@@ -184,33 +169,34 @@ class _LoginViewState extends ConsumerState<LoginView> {
                     ),
                     const SizedBox(height: 48),
 
-                    // Login Title
+                    // Forgot Password Title
                     Text(
-                      context.l10n.loginHeader,
+                      context.l10n.forgotPasswordTitle,
                       style: const TextStyle(
-                        fontSize: 26,
+                        fontSize: 22,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF1E293B),
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 12),
 
-                    // Description
+                    // Instructions
                     Text(
-                      context.l10n.loginSubtitle,
+                      context.l10n.forgotPasswordInstruction,
                       style: const TextStyle(
                         fontSize: 14.5,
                         color: Color(0xFF64748B),
+                        height: 1.4,
                       ),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 36),
 
-                    // User ID Field
+                    // Email or User ID Field
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        context.l10n.userIdLabel,
+                        context.l10n.emailOrUserIdLabel,
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
@@ -220,7 +206,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                     ),
                     const SizedBox(height: 8),
                     TextFormField(
-                      controller: _userIdController,
+                      controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       style: const TextStyle(
                         fontSize: 15,
@@ -228,9 +214,14 @@ class _LoginViewState extends ConsumerState<LoginView> {
                       ),
                       decoration: InputDecoration(
                         prefixIcon: const Icon(
-                          Icons.person_outline,
+                          Icons.mail_outline,
                           color: Color(0xFF64748B),
                           size: 22,
+                        ),
+                        hintText: context.l10n.emailOrUserIdPlaceholder,
+                        hintStyle: const TextStyle(
+                          color: Color(0xFF94A3B8),
+                          fontSize: 14.5,
                         ),
                         contentPadding: const EdgeInsets.symmetric(
                           vertical: 16,
@@ -272,169 +263,26 @@ class _LoginViewState extends ConsumerState<LoginView> {
                         if (value == null || value.trim().isEmpty) {
                           return context.l10n.userIdRequired;
                         }
-                        final emailRegExp = RegExp(
-                          r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
-                        );
-                        if (!emailRegExp.hasMatch(value.trim())) {
-                          return context.l10n.userIdInvalid;
+                        // Accept either basic email or simple user ID
+                        if (value.contains('@')) {
+                          final emailRegExp = RegExp(
+                            r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                          );
+                          if (!emailRegExp.hasMatch(value.trim())) {
+                            return context.l10n.userIdInvalid;
+                          }
                         }
                         return null;
                       },
-                    ),
-                    const SizedBox(height: 20),
-
-                    // Password Field
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        context.l10n.passwordLabel,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFF1E293B),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    TextFormField(
-                      controller: _passwordController,
-                      obscureText: state.obscurePassword,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        color: Color(0xFF1E293B),
-                        letterSpacing: 2.0,
-                      ),
-                      decoration: InputDecoration(
-                        prefixIcon: const Icon(
-                          Icons.lock_outline,
-                          color: Color(0xFF64748B),
-                          size: 22,
-                        ),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            state.obscurePassword
-                                ? Icons.visibility_outlined
-                                : Icons.visibility_off_outlined,
-                            color: const Color(0xFF64748B),
-                            size: 22,
-                          ),
-                          onPressed: viewModel.toggleObscurePassword,
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(
-                          vertical: 16,
-                          horizontal: 16,
-                        ),
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(
-                            color: Color(0xFFE2E8F0),
-                            width: 1.5,
-                          ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(
-                            color: Theme.of(context).colorScheme.primary,
-                            width: 1.5,
-                          ),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(
-                            color: Colors.redAccent,
-                            width: 1.5,
-                          ),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(
-                            color: Colors.redAccent,
-                            width: 1.5,
-                          ),
-                        ),
-                      ),
-                      onChanged: viewModel.passwordChanged,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return context.l10n.passwordRequired;
-                        }
-                        if (value.length < 6) {
-                          return context.l10n.passwordInvalid;
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 16),
-
-                    // Remember Me & Forgot Password Row
-                    Wrap(
-                      alignment: WrapAlignment.spaceBetween,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      spacing: 16,
-                      runSpacing: 12,
-                      children: [
-                        // Remember Me
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            SizedBox(
-                              width: 24,
-                              height: 24,
-                              child: Checkbox(
-                                value: _rememberMe,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _rememberMe = value ?? false;
-                                  });
-                                },
-                                activeColor: Theme.of(
-                                  context,
-                                ).colorScheme.primary,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4),
-                                ),
-                                side: const BorderSide(
-                                  color: Color(0xFFCBD5E1),
-                                  width: 1.5,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            Text(
-                              context.l10n.rememberMe,
-                              style: const TextStyle(
-                                fontSize: 13.5,
-                                color: Color(0xFF64748B),
-                              ),
-                            ),
-                          ],
-                        ),
-                        // Forgot Password
-                        GestureDetector(
-                          onTap: () {
-                            context.go(AppRoutes.forgotPassword);
-                          },
-                          child: Text(
-                            context.l10n.forgotPassword,
-                            style: TextStyle(
-                              fontSize: 13.5,
-                              fontWeight: FontWeight.w600,
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
                     const SizedBox(height: 28),
 
-                    // Sign In Button
+                    // Send Reset Link Button
                     MouseRegion(
-                      onEnter: (_) => setState(() => _isHoveringSignIn = true),
-                      onExit: (_) => setState(() => _isHoveringSignIn = false),
+                      onEnter: (_) => setState(() => _isHoveringSend = true),
+                      onExit: (_) => setState(() => _isHoveringSend = false),
                       child: GestureDetector(
-                        onTap: state.isSubmitting ? null : _onSubmit,
+                        onTap: state.isSubmitting ? null : _handleSendResetLink,
                         child: AnimatedContainer(
                           duration: const Duration(milliseconds: 200),
                           width: double.infinity,
@@ -444,7 +292,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                                 ? Theme.of(
                                     context,
                                   ).colorScheme.primary.withValues(alpha: 0.7)
-                                : (_isHoveringSignIn
+                                : (_isHoveringSend
                                       ? AppColors.primary
                                       : Theme.of(context).colorScheme.primary),
                             borderRadius: BorderRadius.circular(10),
@@ -472,7 +320,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        context.l10n.signInButton,
+                                        context.l10n.sendResetLinkLabel,
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 16,
@@ -491,49 +339,29 @@ class _LoginViewState extends ConsumerState<LoginView> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 32),
+                    const SizedBox(height: 28),
+
+                    // Back to Login
+                    GestureDetector(
+                      onTap: () {
+                        context.go(AppRoutes.login);
+                      },
+                      child: Text(
+                        context.l10n.backToLogin,
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 48),
 
                     // Divider Line
                     const Divider(color: Color(0xFFE2E8F0), thickness: 1.0),
                     const SizedBox(height: 24),
 
-                    // Don't have an account? Contact Admin
-                    Wrap(
-                      alignment: WrapAlignment.center,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      spacing: 4,
-                      runSpacing: 4,
-                      children: [
-                        Text(
-                          context.l10n.dontHaveAccount,
-                          style: const TextStyle(
-                            fontSize: 14.5,
-                            color: Color(0xFF64748B),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(context.l10n.contactAdminClicked),
-                                behavior: SnackBarBehavior.floating,
-                              ),
-                            );
-                          },
-                          child: Text(
-                            context.l10n.contactAdmin,
-                            style: TextStyle(
-                              fontSize: 14.5,
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 48),
-
-                    // Footer Links (Help Center / Privacy Policy)
+                    // Footer Links (Help Center / Privacy Policy / Terms of Use)
                     Wrap(
                       alignment: WrapAlignment.center,
                       crossAxisAlignment: WrapCrossAlignment.center,
@@ -561,6 +389,23 @@ class _LoginViewState extends ConsumerState<LoginView> {
                           onTap: () {},
                           child: Text(
                             context.l10n.privacyPolicy,
+                            style: const TextStyle(
+                              fontSize: 13,
+                              color: Color(0xFF64748B),
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          '•',
+                          style: TextStyle(
+                            color: Color(0xFFCBD5E1),
+                            fontSize: 16,
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Text(
+                            context.l10n.termsOfUse,
                             style: const TextStyle(
                               fontSize: 13,
                               color: Color(0xFF64748B),

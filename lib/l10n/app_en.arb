@@ -1,8 +1,136 @@
 {
   "@@locale": "en",
-  "appTitle": "CoWorks",
+  "appTitle": "CoWork Member Login",
   "@appTitle": {
     "description": "Application title shown by the OS (task switcher, etc.)."
+  },
+  "appName": "CoWork",
+  "@appName": {
+    "description": "The brand name of the app"
+  },
+  "memberLogin": "MEMBER LOGIN",
+  "@memberLogin": {
+    "description": "Sub-header below brand name"
+  },
+  "loginHeader": "Login",
+  "@loginHeader": {
+    "description": "Main title of the login form"
+  },
+  "loginSubtitle": "Please enter your credentials to log in.",
+  "@loginSubtitle": {
+    "description": "Sub-description of the login form"
+  },
+  "userIdLabel": "User ID",
+  "@userIdLabel": {
+    "description": "Label for the User ID input field"
+  },
+  "passwordLabel": "Password",
+  "@passwordLabel": {
+    "description": "Label for the Password input field"
+  },
+  "rememberMe": "Remember me",
+  "@rememberMe": {
+    "description": "Label for the Remember me checkbox"
+  },
+  "forgotPassword": "Forgot password?",
+  "@forgotPassword": {
+    "description": "Button/link text for resetting password"
+  },
+  "signInButton": "Sign In",
+  "@signInButton": {
+    "description": "Text for the sign-in submit button"
+  },
+  "userIdRequired": "User ID is required",
+  "@userIdRequired": {
+    "description": "Validation error when user ID field is empty"
+  },
+  "userIdInvalid": "Please enter a valid email address",
+  "@userIdInvalid": {
+    "description": "Validation error when email address format is incorrect"
+  },
+  "passwordRequired": "Password is required",
+  "@passwordRequired": {
+    "description": "Validation error when password field is empty"
+  },
+  "passwordInvalid": "Password must be at least 6 characters",
+  "@passwordInvalid": {
+    "description": "Validation error when password is too short"
+  },
+  "dontHaveAccount": "Don't have an account? ",
+  "@dontHaveAccount": {
+    "description": "Footer helper text asking if the user has an account"
+  },
+  "contactAdmin": "Contact Admin",
+  "@contactAdmin": {
+    "description": "Link text to contact administrator"
+  },
+  "helpCenter": "Help Center",
+  "@helpCenter": {
+    "description": "Footer link for Help Center"
+  },
+  "privacyPolicy": "Privacy Policy",
+  "@privacyPolicy": {
+    "description": "Footer link for Privacy Policy"
+  },
+  "copyrightText": "© 2026 CoWork Management Systems. All rights reserved.",
+  "@copyrightText": {
+    "description": "Copyright notice footer"
+  },
+  "signingInAs": "Signing in as {email}...",
+  "@signingInAs": {
+    "description": "Snackbar message when successfully submitting login form",
+    "placeholders": {
+      "email": {
+        "type": "String",
+        "example": "user@example.com"
+      }
+    }
+  },
+  "forgotPasswordClicked": "Forgot password link clicked",
+  "@forgotPasswordClicked": {
+    "description": "Snackbar message when forgot password link is tapped"
+  },
+  "contactAdminClicked": "Contact Admin clicked",
+  "@contactAdminClicked": {
+    "description": "Snackbar message when contact admin link is tapped"
+  },
+  "forgotPasswordTitle": "Forgot Password",
+  "@forgotPasswordTitle": {
+    "description": "Forgot password screen heading"
+  },
+  "forgotPasswordInstruction": "Enter your User ID or registered Email to receive reset instructions.",
+  "@forgotPasswordInstruction": {
+    "description": "Instructions under forgot password heading"
+  },
+  "emailOrUserIdLabel": "Email or User ID",
+  "@emailOrUserIdLabel": {
+    "description": "Label for the email/user ID input field on forgot password screen"
+  },
+  "emailOrUserIdPlaceholder": "e.g., naren@nichi.com",
+  "@emailOrUserIdPlaceholder": {
+    "description": "Placeholder hint for email/user ID input field"
+  },
+  "sendResetLinkLabel": "Send Reset Link",
+  "@sendResetLinkLabel": {
+    "description": "Text for button that sends reset link"
+  },
+  "backToLogin": "Back to Login",
+  "@backToLogin": {
+    "description": "Link text to go back to the login screen"
+  },
+  "termsOfUse": "Terms of Use",
+  "@termsOfUse": {
+    "description": "Footer link for Terms of Use"
+  },
+  "resetLinkSent": "Reset link sent to {email}",
+  "@resetLinkSent": {
+    "description": "Toast message showing email reset link has been sent",
+    "placeholders": {
+      "email": {
+        "type": "String",
+        "example": "user@example.com"
+      }
+    }
   },
   "signInAppBarTitle": "Sign in",
   "@signInAppBarTitle": {
@@ -15,14 +143,6 @@
   "emailLabel": "Email",
   "@emailLabel": {
     "description": "Label for the email input field."
-  },
-  "passwordLabel": "Password",
-  "@passwordLabel": {
-    "description": "Label for the password input field."
-  },
-  "signInButton": "Sign in",
-  "@signInButton": {
-    "description": "Login submit button label."
   },
   "usersTitle": "Users",
   "@usersTitle": {

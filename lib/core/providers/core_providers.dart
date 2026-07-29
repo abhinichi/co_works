@@ -1,11 +1,11 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:dio/dio.dart';
 import 'package:co_works/core/config/app_config.dart';
 import 'package:co_works/core/network/dio_client.dart';
 import 'package:co_works/core/network/interceptors/auth_interceptor.dart';
 import 'package:co_works/core/network/network_info.dart';
 import 'package:co_works/core/storage/preferences_service.dart';
 import 'package:co_works/core/storage/secure_storage_service.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
