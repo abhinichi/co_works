@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Launcher label. Read by Android before the Flutter engine starts, so
+         it must live here rather than in the Dart/ARB localization system.
+         Add values-<locale>/strings.xml overrides (e.g. values-fr/) to
+         localize it per device language. -->
+    <string name="app_name">CoWorks Project</string>
+</resources>

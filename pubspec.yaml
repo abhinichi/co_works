@@ -1,5 +1,5 @@
 name: co_works
-description: "A new Flutter project."
+description: "CoWorks project: MVVM + Clean Architecture with Riverpod, Retrofit, Freezed and go_router."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.11.4
+  sdk: ^3.11.1
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -30,10 +30,25 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  flutter_riverpod: ">=3.2.1 <3.3.0"
+  riverpod_annotation: ^4.0.0
+  dio: ^5.10.0
+  retrofit: ^4.9.2
+  go_router: ^17.3.0
+  dartz: ^0.10.1
+  freezed_annotation: ^3.1.0
+  json_annotation: ">=4.11.0 <4.12.0"
+  shared_preferences: ^2.5.5
+  flutter_secure_storage: ^10.3.1
+  logger: ^2.7.0
+  connectivity_plus: ^7.2.0
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
@@ -45,12 +60,21 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
+  build_runner: ^2.4.13
+  riverpod_generator: ^4.0.0
+  retrofit_generator: ^10.0.0
+  freezed: ^3.0.0
+  json_serializable: ^6.8.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
+
+  # Generates the localization delegates from the ARB files in `lib/l10n`
+  # (configured via `l10n.yaml`).
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

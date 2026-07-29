@@ -1,0 +1,71 @@
+{
+  "@@locale": "en",
+  "appTitle": "CoWorks",
+  "@appTitle": {
+    "description": "Application title shown by the OS (task switcher, etc.)."
+  },
+  "signInAppBarTitle": "Sign in",
+  "@signInAppBarTitle": {
+    "description": "Login screen app bar title."
+  },
+  "loginWelcome": "Welcome back",
+  "@loginWelcome": {
+    "description": "Login screen headline."
+  },
+  "emailLabel": "Email",
+  "@emailLabel": {
+    "description": "Label for the email input field."
+  },
+  "passwordLabel": "Password",
+  "@passwordLabel": {
+    "description": "Label for the password input field."
+  },
+  "signInButton": "Sign in",
+  "@signInButton": {
+    "description": "Login submit button label."
+  },
+  "usersTitle": "Users",
+  "@usersTitle": {
+    "description": "Users list screen title."
+  },
+  "signOutTooltip": "Sign out",
+  "@signOutTooltip": {
+    "description": "Tooltip for the sign-out action."
+  },
+  "usersEmpty": "No users found",
+  "@usersEmpty": {
+    "description": "Shown when the users list loads but is empty."
+  },
+  "toggleThemeTooltip": "Toggle theme",
+  "@toggleThemeTooltip": {
+    "description": "Tooltip for the theme-mode toggle action."
+  },
+  "retryButton": "Retry",
+  "@retryButton": {
+    "description": "Label for the retry action on error screens."
+  },
+  "failureServer": "Something went wrong on the server",
+  "@failureServer": {
+    "description": "Message for a server-side failure."
+  },
+  "failureNetwork": "No internet connection",
+  "@failureNetwork": {
+    "description": "Message when the device is offline."
+  },
+  "failureTimeout": "The connection has timed out",
+  "@failureTimeout": {
+    "description": "Message when a request times out."
+  },
+  "failureUnauthorized": "Session expired, please sign in",
+  "@failureUnauthorized": {
+    "description": "Message when authentication is required or expired."
+  },
+  "failureCache": "Failed to read local data",
+  "@failureCache": {
+    "description": "Message when a local storage operation fails."
+  },
+  "failureUnknown": "An unexpected error occurred",
+  "@failureUnknown": {
+    "description": "Message for an unanticipated failure."
+  }
+}
